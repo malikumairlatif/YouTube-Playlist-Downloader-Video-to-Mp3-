@@ -1,44 +1,33 @@
-# YouTube-Playlist & Mix-Downloader (Video-to-Mp3)
-This python script enables to download entire playlist or YouTube Mix videos from YouTube into Mp3 format. Best for music downloads.
+# YouTube MP3 Downloader
 
-# YouTube Playlist/Mix Downloader
-
-This script downloads audio streams from YouTube playlists or Mixes, converts them to MP3 format, and saves them to a specified directory.
+A Python-based YouTube MP3 Downloader that allows you to download audio from YouTube videos or playlists and convert them to MP3 format.
 
 ## Features
 
-- Downloads audio streams from YouTube playlists and Mixes.
-- Converts downloaded audio files to MP3 format using `pydub`.
-- Displays a progress bar for each download using `tqdm`.
-- Handles retries for network-related errors and other exceptions.
-- Measures and displays the total elapsed time for the download process.
+- Download audio from individual YouTube videos or entire playlists.
+- Convert downloaded audio to MP3 format.
+- Display download progress.
+- Retry mechanism for failed downloads.
+- Skip age-restricted content.
+- Organize and save downloaded files to a specified directory.
 
 ## Dependencies
 
-- **pytube**: A lightweight, Pythonic library for downloading YouTube videos.
-- **pydub**: A library for audio manipulation, used here to convert audio files to MP3 format.
-- **tqdm**: A library to provide a progress bar for downloads.
-- **os**: Standard library module for interacting with the operating system, used for file operations.
-- **time**: Standard library module for handling time-related tasks, used to measure elapsed time and implement retries.
-- **re**: Standard library module for regular expressions, used to parse video IDs from HTML.
-- **ssl**: Standard library module for SSL-related tasks, used to handle SSL errors.
-- **requests**: A popular HTTP library for making network requests.
-- **socket**: Standard library module for low-level network interface, used to handle network errors.
+This project requires the following Python libraries:
 
-## Functions
-
-- **download_video(video, index, download_path)**: Downloads and converts a single video.
-- **get_mix_videos(mix_url)**: Fetches video URLs from a YouTube Mix URL.
-- **download_video_with_retries(video, index, download_path, retries=3)**: Retries downloading a video on failure.
-- **download_playlist_or_mix(url, download_path)**: Downloads all videos in a playlist or mix.
+- `pytube`: For downloading YouTube videos.
+- `pydub`: For converting audio files.
+- `tqdm`: For displaying download progress.
+- `requests`: For making HTTP requests.
+- `ffmpeg`: Required by `pydub` for audio conversion.
 
 ## Installation
 
-1. Clone the repository:
+1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/youtube-playlist-mix-downloader.git
-   cd youtube-playlist-mix-downloader
+   git clone https://github.com/yourusername/youtube-mp3-downloader.git
+   cd youtube-mp3-downloader
    
 2. Install the required dependencies:
    ```bash
@@ -119,3 +108,6 @@ This script downloads audio streams from YouTube playlists or Mixes, converts th
 <p>To ensure that <code>ffmpeg</code> is properly installed and accessible from your PATH, open a terminal or command prompt and run:</p>
 <p style="padding-left: 80px;"><code class="hljs language-markdown"><span class="hljs-code"><span class="hljs-built_in">ffmpeg -version </span></span></code></p>
 <p>You should see the <code>ffmpeg</code> version information printed, indicating that it's correctly installed.</p>
+
+## Contributing
+Contributions are welcome! Please fork this repository and submit pull requests with your changes. Make sure to follow the coding standards and add appropriate documentation.
