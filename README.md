@@ -1,39 +1,68 @@
-# YouTube-Playlist-Downloader (Video-to-Mp3)
-This python script enables to download entire playlist from YouTube into Mp3 format. Best for music downloads.
+# YouTube-Playlist & Mix-Downloader (Video-to-Mp3)
+This python script enables to download entire playlist or YouTube Mix videos from YouTube into Mp3 format. Best for music downloads.
 
-<ol>
-<li>
-<p><strong>Dependencies and Imports</strong>:</p>
-<ul>
-<li><code>pytube</code>: To download videos from YouTube.</li>
-<li><code>pydub</code>: To handle audio conversion.</li>
-<li><code>tqdm</code>: To create a progress bar for each download.</li>
-</ul>
-</li>
-<li>
-<p><strong>Functions</strong>:</p>
-<ul>
-<li><code>download_playlist(playlist_url, download_path)</code>: This function downloads all the videos in a YouTube playlist as audio files and saves them in the specified download path.</li>
-<li><code>Playlist(playlist_url)</code>: This function creates a Playlist object representing the YouTube playlist specified by the <code>playlist_url</code>.</li>
-<li><code>os.path.exists(download_path)</code>: This function checks if the specified download path exists on the system.</li>
-<li><code>os.makedirs(download_path)</code>: This function creates the specified download path if it does not already exist.</li>
-<li><code>enumerate(playlist.videos, start=1)</code>: This function iterates over the videos in the playlist, starting from index 1.</li>
-<li><code>video.streams.filter(only_audio=True, file_extension='mp4').first()</code>: This function filters the available streams to select the first stream that contains only audio and has an MP4 file extension.</li>
-<li><code>os.path.getsize(audio_file)</code>: This function returns the size of the specified file in bytes.</li>
-<li><code>tqdm(total=total_size, unit='B', unit_scale=True, desc=video.title, ascii=True)</code>: This function creates a progress bar to visualize the download progress of the audio file.</li>
-<li><code>open(audio_file, 'rb')</code>: This function opens the audio file in binary read mode.</li>
-<li><code>AudioSegment.from_file(audio_file).export(mp3_file, format="mp3", bitrate="320k")</code>: This function converts the downloaded audio file to MP3 format with a bitrate of 320kbps.</li>
-<li><code>os.remove(audio_file)</code>: This function deletes the original audio file after it has been successfully converted to MP3 format.</li>
-</ul>
-</li>
-<li>
-<p><strong>Main Logic</strong>:</p>
-<ul>
-<li>Prompts the user for the YouTube playlist URL and download directory.</li>
-<li>Downloads the playlist, converts each audio stream to MP3 at 320kbps, and saves it to the specified directory.</li>
-</ul>
-</li>
-</ol>
+# YouTube Playlist/Mix Downloader
+
+This script downloads audio streams from YouTube playlists or Mixes, converts them to MP3 format, and saves them to a specified directory.
+
+## Features
+
+- Downloads audio streams from YouTube playlists and Mixes.
+- Converts downloaded audio files to MP3 format using `pydub`.
+- Displays a progress bar for each download using `tqdm`.
+- Handles retries for network-related errors and other exceptions.
+- Measures and displays the total elapsed time for the download process.
+
+## Dependencies
+
+- **pytube**: A lightweight, Pythonic library for downloading YouTube videos.
+- **pydub**: A library for audio manipulation, used here to convert audio files to MP3 format.
+- **tqdm**: A library to provide a progress bar for downloads.
+- **os**: Standard library module for interacting with the operating system, used for file operations.
+- **time**: Standard library module for handling time-related tasks, used to measure elapsed time and implement retries.
+- **re**: Standard library module for regular expressions, used to parse video IDs from HTML.
+- **ssl**: Standard library module for SSL-related tasks, used to handle SSL errors.
+- **requests**: A popular HTTP library for making network requests.
+- **socket**: Standard library module for low-level network interface, used to handle network errors.
+
+## Functions
+
+- **download_video(video, index, download_path)**: Downloads and converts a single video.
+- **get_mix_videos(mix_url)**: Fetches video URLs from a YouTube Mix URL.
+- **download_video_with_retries(video, index, download_path, retries=3)**: Retries downloading a video on failure.
+- **download_playlist_or_mix(url, download_path)**: Downloads all videos in a playlist or mix.
+
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/yourusername/youtube-playlist-mix-downloader.git
+   cd youtube-playlist-mix-downloader
+   
+2. Install the required dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+   Ensure your requirements.txt contains:
+    ```bash
+   pytube
+   pydub
+   tqdm
+   requests
+
+## Usage:
+1.  Run the script:
+   ```bash
+   python download_youtube.py
+```
+
+2.  Enter the YouTube playlist or Mix URL when prompted.
+3.  Enter the download destination path when prompted.
+
+
+   
 <h3>Step 1: Install <code>ffmpeg</code></h3>
 <ol>
 <li>
